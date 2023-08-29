@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <title>Filters</title>
+            <title>Paris Basketball Analytics</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
             <style>
                 
@@ -320,11 +320,11 @@
             <style>
                 /* CSS styling for the table */
                 table {
-                    width: 90%;
+                    width: 100%;
                     border-collapse: collapse;
                     margin-left: auto;
                     margin-right: auto;
-                    font-size: small;
+                    font-size: x-small;
                 }
         
                 th, td {
@@ -338,11 +338,16 @@
         <table>
             <tr>
                 <th>Line-up</th>
-                <th>Rim</th>
-                <th>Paint</th>
-                <th>Short 2</th>
-                <th>Long 2</th>
-                <th>3pts</th>
+                <th>Rim Dist</th>
+                <th>Rim FG%</th>
+                <th>Paint Dist</th>
+                <th>Paint FG%</th>
+                <th>Short 2 Dist</th>
+                <th>Short 2 FG%</th>
+                <th>Long 2 Dist</th>
+                <th>Long 2 FG%</th>
+                <th>3pts Dist</th>
+                <th>3pts FG%</th>
                 <!-- Add more table headers for additional columns as needed -->
             </tr>
             {% for row in datalist %}
@@ -353,6 +358,11 @@
             <td>{{ row[3] }}</td>
             <td>{{ row[4] }}</td>
             <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[8] }}</td>
+            <td>{{ row[9] }}</td>
+            <td>{{ row[10] }}</td>
         </tr>
         {% endfor %}
         </table> 

@@ -233,25 +233,30 @@ def index():
                 
         datalist = (datalist[['lineup_string', 'Rim_Attempt', 'Rim_Made', 'Paint_Attempt', 'Paint_Made', 'Short2_Attempt', 'Short2_Made', 'Long2_Attempt', 'Long2_Made', 'Pts3_Attempt', 'Pts3_Made', 'Tot_Attempt']])
 
-        datalist['Rim'] = (datalist['Rim_Attempt'] / datalist['Tot_Attempt'])*100
-        #datalist['Rim_FG%'] = (datalist['Rim_Made'] / datalist['Rim_Attempt'])*100
-        datalist['Paint'] = (datalist['Paint_Attempt'] / datalist['Tot_Attempt'])*100
-        #datalist['Paint_FG%'] = (datalist['Paint_Made'] / datalist['Paint_Attempt'])*100
-        datalist['Short2'] = (datalist['Short2_Attempt'] / datalist['Tot_Attempt'])*100
-        #datalist['Short2_FG%'] = (datalist['Short2_Made'] / datalist['Short2_Attempt'])*100
-        datalist['Long2'] = (datalist['Long2_Attempt'] / datalist['Tot_Attempt'])*100
-        #datalist['Long2_FG%'] = (datalist['Long2_Made'] / datalist['Long2_Attempt'])*100
-        datalist['3pts'] = (datalist['Pts3_Attempt'] / datalist['Tot_Attempt'])*100
-        #datalist['Pts3_FG%'] = (datalist['Pts3_Made'] / datalist['Pts3_Attempt'])*100
+        datalist['Rim_dist'] = (datalist['Rim_Attempt'] / datalist['Tot_Attempt'])*100
+        datalist['Rim_FG%'] = (datalist['Rim_Made'] / datalist['Rim_Attempt'])*100
+        datalist['Paint_dist'] = (datalist['Paint_Attempt'] / datalist['Tot_Attempt'])*100
+        datalist['Paint_FG%'] = (datalist['Paint_Made'] / datalist['Paint_Attempt'])*100
+        datalist['Short2_dist'] = (datalist['Short2_Attempt'] / datalist['Tot_Attempt'])*100
+        datalist['Short2_FG%'] = (datalist['Short2_Made'] / datalist['Short2_Attempt'])*100
+        datalist['Long2_dist'] = (datalist['Long2_Attempt'] / datalist['Tot_Attempt'])*100
+        datalist['Long2_FG%'] = (datalist['Long2_Made'] / datalist['Long2_Attempt'])*100
+        datalist['3pts_dist'] = (datalist['Pts3_Attempt'] / datalist['Tot_Attempt'])*100
+        datalist['3pts_FG%'] = (datalist['Pts3_Made'] / datalist['Pts3_Attempt'])*100
 
-        datalist = (datalist[['lineup_string', 'Rim', 'Paint', 'Short2', 'Long2', '3pts']])
+        datalist = (datalist[['lineup_string', 'Rim_dist', 'Rim_FG%', 'Paint_dist', 'Paint_FG%', 'Short2_dist', 'Short2_FG%', 'Long2_dist', 'Long2_FG%', '3pts_dist', '3pts_FG%']])
         datalist = datalist.round(2)
-        datalist['Rim'] = datalist['Rim'].fillna('-').astype(str) + ' %'
-        datalist['Paint'] = datalist['Paint'].fillna('-').astype(str) + ' %'
-        datalist['Short2'] = datalist['Short2'].fillna('-').astype(str) + ' %'
-        datalist['Long2'] = datalist['Long2'].fillna('-').astype(str) + ' %'
-        datalist['3pts'] = datalist['3pts'].fillna('-').astype(str) + ' %'
-        #datalist = (datalist[['lineup_string', 'Rim_dist', 'Rim_FG%', 'Paint_dist', 'Paint_FG%', 'Short2_dist', 'Short2_FG%', 'Long2_dist', 'Long2_FG%', 'Pts3_dist', 'Pts3_FG%']])
+        datalist['Rim_dist'] = datalist['Rim_dist'].fillna('-').astype(str) + ' %'
+        datalist['Paint_dist'] = datalist['Paint_dist'].fillna('-').astype(str) + ' %'
+        datalist['Short2_dist'] = datalist['Short2_dist'].fillna('-').astype(str) + ' %'
+        datalist['Long2_dist'] = datalist['Long2_dist'].fillna('-').astype(str) + ' %'
+        datalist['3pts_dist'] = datalist['3pts_dist'].fillna('-').astype(str) + ' %'
+        datalist['Rim_FG%'] = datalist['Rim_FG%'].fillna('-').astype(str) + ' %'
+        datalist['Paint_FG%'] = datalist['Paint_FG%'].fillna('-').astype(str) + ' %'
+        datalist['Short2_FG%'] = datalist['Short2_FG%'].fillna('-').astype(str) + ' %'
+        datalist['Long2_FG%'] = datalist['Long2_FG%'].fillna('-').astype(str) + ' %'
+        datalist['3pts_FG%'] = datalist['3pts_FG%'].fillna('-').astype(str) + ' %'
+        
         datalist = tuple(datalist.itertuples(index=False, name=None))
         
         return render_template('index.html', datalist=datalist,player_id=player_id)
