@@ -2,13 +2,17 @@ from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 import numpy as np
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'aws.connect.psdb.cloud'
-app.config['MYSQL_USER'] = '3ysp4iy6u7i4fjxkl778'
-app.config['MYSQL_PASSWORD'] = 'pscale_pw_zoCO9O3nmho171us0ql8Z3CTAdNWaV7w9GGq3awGXxD'
-app.config['MYSQL_DB'] = 'sdeng'
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
 app.config["MYSQL_CUSTOM_OPTIONS"] = {"ssl": {"ssl_ca": "/etc/ssl/cert.pem"}}
 app.config['MYSQL_CHARSET'] = 'latin1'
 
