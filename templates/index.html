@@ -2,12 +2,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="text/javascript">
-            function populate(s1,s2,s3){
+            function populate(s1,s2){
                 var s1 = document.getElementById(s1);
                 var s2 = document.getElementById(s2);
-                var s3 = document.getElementById(s3);
                 s2.innerHTML = "";
-                s3.innerHTML = "";
                 if(s1.value == "Paris"){
                     var optionArray = ["|Player","bandja sy|Bandja Sy", "collin malcolm|Collin Malcolm", "gauthier denis|Gauthier Denis", "enzo shahrvin|Enzo Shahrvin", "jean noba|Jean Noba", "leon kratzer|Leon Kratzer", "maxim logue|Maxim Logue", "michael kessens|Michael Kessens", "mikael jantunen|Mikael Jantunen", "mohamed diawara|Mohamed Diawara", "nadir hifi|Nadir Hifi", "sebastian herrera|Sebastian Herrera", "tj shorts|Tj Shorts", "tyson ward|Tyson Ward"];
                 }
@@ -17,7 +15,6 @@
                     newOption.value = pair[0];
                     newOption.innerHTML = pair[1];
                     s2.options.add(newOption);
-                    s3.options.add(newOption);
                 }
             }
         </script>
@@ -110,7 +107,7 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <select name="search_filter_team" id="search_filter_team" class="form-control" onchange="populate(this.id,'search_filter_player1','search_filter_player2')">
+                                <select name="search_filter_team" id="search_filter_team" class="form-control" onchange="populate(this.id,'search_filter_player1')">
                                     <option value="">Team</option>';
                                     <option value="Blois">Blois</option>';  
                                     <option value="Boulogne-Levallois">Boulogne-Levallois</option>';
@@ -157,21 +154,30 @@
 
                             <div class="col-sm">
                                 <select name="search_filter_player2" id="search_filter_player2" class="form-control">
-                                    <option value="">Player 2</option>
+                                    <option value="">Player 5</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}  
                                 </select>
                                 <input type="hidden" name="hidden_value_player2" id="hidden_value_player2" />
                             </div>
 
                             <div class="col-sm">
                                 <select name="search_filter_player3" id="search_filter_player3" class="form-control">
-                                    <option value="">Player 3</option>  
+                                    <option value="">Player 5</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}    
                                 </select>
                                 <input type="hidden" name="hidden_value_player3" id="hidden_value_player3" />
                             </div>
 
                             <div class="col-sm">
                                 <select name="search_filter_player4" id="search_filter_player4" class="form-control">
-                                    <option value="">Player 4</option> 
+                                    <option value="">Player 5</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}  
                                 </select>
                                 <input type="hidden" name="hidden_value_player4" id="hidden_value_player4" />
                             </div>
