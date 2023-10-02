@@ -1,26 +1,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript">
-            function populate(s1,s2,s3){
-                var s1 = document.getElementById(s1);
-                var s2 = document.getElementById(s2);
-                var s3 = document.getElementById(s3);
-                s2.innerHTML = "";
-                s3.innerHTML = "";
-                if(s1.value == "Paris"){
-                    var optionArray = ["|Player","bandja sy|Bandja Sy", "collin malcolm|Collin Malcolm", "gauthier denis|Gauthier Denis", "enzo shahrvin|Enzo Shahrvin", "jean noba|Jean Noba", "leon kratzer|Leon Kratzer", "maxim logue|Maxim Logue", "michael kessens|Michael Kessens", "mikael jantunen|Mikael Jantunen", "mohamed diawara|Mohamed Diawara", "nadir hifi|Nadir Hifi", "sebastian herrera|Sebastian Herrera", "tj shorts|Tj Shorts", "tyson ward|Tyson Ward"];
-                }
-                for(var option in optionArray){
-                    var pair = optionArray[option].split("|");
-                    var newOption = document.createElement("option");
-                    newOption.value = pair[0];
-                    newOption.innerHTML = pair[1];
-                    s2.options.add(newOption);
-                    s3.options.add(newOption);
-                }
-            }
-        </script>
             <title>Paris Basketball Analytics</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
             <style>
@@ -95,83 +75,56 @@
         <div class="sidebar">
             <a class="brand" style="margin: 0; float: none;" href="#">
                 <img src="https://parisbasketball.paris/wp-content/themes/parisbb/assets/img/logo.png" /></a>
-            <a class="active" href="index.html">Home</a>
-            <a href="shooting">Shooting</a>
+            <a href="index">Home</a>
+            <a class="active" href="shooting.html">Shooting</a>
           </div>
 
         <div class="container-fluid">
             <div class="col-lg-12">
             <br />
-                <h2 align="center">LINE-UPS</h2><br />
+                <h2 align="center">SHOOTING</h2><br />
 
-                    <form method="POST" action="/">
-
-                        <h5 class="mb-1 mt-2">Filters</h5>
-
-                        <div class="row">
-                            <div class="col-sm">
-                                <select name="search_filter_team" id="search_filter_team" class="form-control" onchange="populate(this.id,'search_filter_player1','search_filter_player2')">
-                                    <option value="">Team</option>';
-                                    <option value="Blois">Blois</option>';  
-                                    <option value="Boulogne-Levallois">Boulogne-Levallois</option>';
-                                    <option value="Bourg-en-Bresse">Bourg-en-Bresse</option>';
-                                    <option value="Chalon/Saone">Chalon/Saone</option>';
-                                    <option value="Cholet">Cholet</option>';
-                                    <option value="Dijon">Dijon</option>';
-                                    <option value="Gravelines-Dunkerque">Gravelines-Dunkerque</option>';
-                                    <option value="Le Mans">Le Mans</option>';
-                                    <option value="Le Portel">Le Portel</option>';
-                                    <option value="Limoges">Limoges</option>';
-                                    <option value="Lyon-Villeurbanne">Lyon-Villeurbanne</option>';
-                                    <option value="Monaco">Monaco</option>';
-                                    <option value="Nanterre">Nanterre</option>';
-                                    <option value="Nancy">Nancy</option>';
-                                    <option value="Paris">Paris</option>';
-                                    <option value="Roanne">Roanne</option>';
-                                    <option value="Saint-Quentin">Saint-Quentin</option>';
-                                    <option value="Strasbourg">Strasbourg</option>';
-                                </select>
-                                <input type="hidden" name="hidden_value_team" id="hidden_value_team" />
-                            </div>
-
-                            <div class="col-sm">
-                                <select name="search_filter_season" id="search_filter_season" class="form-control">
-                                    <option value="">Season</option>';
-                                        {% for row in season_id %}
-                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
-                                        {% endfor %}
-                                </select>
-                                <input type="hidden" name="hidden_value_season" id="hidden_value_season" />
-                            </div>
-                        </div>
+                    <form method="POST" action="/shooting">
 
                         <h5 class="mb-1 mt-2">On Court</h5>
 
                         <div class="row">
                             <div class="col-sm">
                                 <select name="search_filter_player1" id="search_filter_player1" class="form-control">
-                                    <option value="">Player 1</option>
+                                    <option value="">Player 1</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}
                                 </select>
                                 <input type="hidden" name="hidden_value_player1" id="hidden_value_player1" />
                             </div>
 
                             <div class="col-sm">
                                 <select name="search_filter_player2" id="search_filter_player2" class="form-control">
-                                    <option value="">Player 2</option>
+                                    <option value="">Player 2</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}  
                                 </select>
                                 <input type="hidden" name="hidden_value_player2" id="hidden_value_player2" />
                             </div>
 
                             <div class="col-sm">
                                 <select name="search_filter_player3" id="search_filter_player3" class="form-control">
-                                    <option value="">Player 3</option>  
+                                    <option value="">Player 3</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}  
                                 </select>
                                 <input type="hidden" name="hidden_value_player3" id="hidden_value_player3" />
                             </div>
 
                             <div class="col-sm">
                                 <select name="search_filter_player4" id="search_filter_player4" class="form-control">
-                                    <option value="">Player 4</option> 
+                                    <option value="">Player 4</option>';
+                                        {% for row in player_id %}
+                                    <option value="{{row[0]}}">{{row[0]}}</option>';    
+                                        {% endfor %}  
                                 </select>
                                 <input type="hidden" name="hidden_value_player4" id="hidden_value_player4" />
                             </div>
@@ -293,61 +246,6 @@
 
             <br />
         </div>
-
-        <div>
-            <style>
-                /* CSS styling for the table */
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-left: auto;
-                    margin-right: auto;
-                    font-size: x-small;
-                }
-        
-                th, td {
-                    border: 1px solid black;
-                    padding: 8px;
-                    text-align: center;
-                }
-        
-                /* Add additional styling as needed */
-            </style>
-        <table>
-            <tr>
-                <th>Team</th>
-                <th>Possessions</th>
-                <th>Rating</th>
-                <th>eFG%</th>
-                <th>TS%</th>
-                <th>TOV%</th>
-                <th>OREB%</th>
-                <th>DREB%</th>
-                <th>FTr</th>
-                <th>STL%</th>
-                <th>BLK%</th>
-                <th>AST%</th>
-                <!-- Add more table headers for additional columns as needed -->
-            </tr>
-            {% for row in groupdata %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-            <td>{{ row[5] }}</td>
-            <td>{{ row[6] }}</td>
-            <td>{{ row[7] }}</td>
-            <td>{{ row[8] }}</td>
-            <td>{{ row[9] }}</td>
-            <td>{{ row[10] }}</td>
-            <td>{{ row[11] }}</td>
-        </tr>
-        {% endfor %}
-        </table> 
-        </div>
-        <br />
         </div>
             <style>
                 /* CSS styling for the table */
@@ -369,24 +267,17 @@
             </style>
         <table>
             <tr>
-                <th>Line-Up</th>
-                <th>Poss</th>
-                <th>Net RTG</th>
-                <th>Off RTG</th>
-                <th>Def RTG</th>
-                <th>eFG%</th>
-                <th>TOV%</th>
-                <th>OREB%</th>
-                <th>DREB%</th>
-                <th>FTr</th>
-                <th>Opp eFG%</th>
-                <th>Opp TOV%</th>
-                <th>Opp OREB%</th>
-                <th>Opp DREB%</th>
-                <th>Opp FTr</th>
-                <th>STL%</th>
-                <th>BLK%</th>
-                <th>AST%</th>
+                <th>Line-up</th>
+                <th>Rim Dist</th>
+                <th>Rim FG%</th>
+                <th>Paint Dist</th>
+                <th>Paint FG%</th>
+                <th>Short 2 Dist</th>
+                <th>Short 2 FG%</th>
+                <th>Long 2 Dist</th>
+                <th>Long 2 FG%</th>
+                <th>3pts Dist</th>
+                <th>3pts FG%</th>
                 <!-- Add more table headers for additional columns as needed -->
             </tr>
             {% for row in datalist %}
@@ -402,19 +293,9 @@
             <td>{{ row[8] }}</td>
             <td>{{ row[9] }}</td>
             <td>{{ row[10] }}</td>
-            <td>{{ row[11] }}</td>
-            <td>{{ row[12] }}</td>
-            <td>{{ row[13] }}</td>
-            <td>{{ row[14] }}</td>
-            <td>{{ row[15] }}</td>
-            <td>{{ row[16] }}</td>
-            <td>{{ row[17] }}</td>
         </tr>
         {% endfor %}
         </table> 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-            
-
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
